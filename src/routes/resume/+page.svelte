@@ -3,11 +3,11 @@
     const { name, title, location, phone, email, linkedin, github, summary, experience, skills, languages, education } = data.resume;
 </script>
 
-<div class="w-[8.27in] m-auto">
+<div class="m-auto w-[8.27in]">
     <section class="mb-(--spacing-lg)">
-        <h1 class="text-(--accent-color) text-(length:--font-size-xl) font-bold text-center">{name}</h1>
-        <h2 class="text-(length:--font-size-lg) text-center">{title}</h2>
-        <p class="text-(length:--font-size) text-center">
+        <h1 class="text-center text-(length:--font-size-xl) font-bold text-(--accent-color)">{name}</h1>
+        <h2 class="text-center text-(length:--font-size-lg)">{title}</h2>
+        <p class="text-center text-(length:--font-size)">
             {location} • {phone} •
             <a target="_blank" href="mailto:{email}">{email}</a>
             •
@@ -18,14 +18,14 @@
     </section>
 
     <section class="mb-(--spacing-lg)">
-        <h3 class="text-(--accent-color) text-(length:--font-size-lg) font-bold">SUMMARY</h3>
-        <div class="h-(--divider-weight) bg-(--divider-color) mb-(--spacing-lg)"></div>
+        <h3 class="text-(length:--font-size-lg) font-bold text-(--accent-color)">SUMMARY</h3>
+        <div class="mb-(--spacing-lg) h-(--divider-weight) bg-(--divider-color)"></div>
         <div class="text-(length:--font-size)">{summary}</div>
     </section>
 
     <section class="mb-(--spacing-lg)">
-        <h3 class="text-(--accent-color) text-(length:--font-size-lg) font-bold">EXPERIENCE</h3>
-        <div class="h-(--divider-weight) bg-(--divider-color) mb-(--spacing-lg)"></div>
+        <h3 class="text-(length:--font-size-lg) font-bold text-(--accent-color)">EXPERIENCE</h3>
+        <div class="mb-(--spacing-lg) h-(--divider-weight) bg-(--divider-color)"></div>
         {#each experience as e}
             <div class="mt-(--spacing-lg)">
                 <div class="flex items-center justify-between">
@@ -35,7 +35,7 @@
                 <div class="text-(length:--font-size) font-bold">{e.title}</div>
                 <ul>
                     {#each e.topics as topic}
-                        <li class="text-(length:--font-size) mt-(--spacing-sm)">• {topic}</li>
+                        <li class="mt-(--spacing-sm) text-(length:--font-size)">• {topic}</li>
                     {/each}
                 </ul>
             </div>
@@ -43,9 +43,9 @@
     </section>
 
     <section class="mb-(--spacing-lg)">
-        <h3 class="text-(--accent-color) text-(length:--font-size-lg) font-bold">SKILLS</h3>
-        <div class="h-(--divider-weight) bg-(--divider-color) mb-(--spacing-lg)"></div>
-        <table class="text-(length:--font-size) border-separate border-spacing-y-(--spacing-sm)">
+        <h3 class="text-(length:--font-size-lg) font-bold text-(--accent-color)">SKILLS</h3>
+        <div class="mb-(--spacing-lg) h-(--divider-weight) bg-(--divider-color)"></div>
+        <table class="border-separate border-spacing-y-(--spacing-sm) text-(length:--font-size)">
             <tbody>
                 {#each skills as skill}
                     <tr>
@@ -58,10 +58,10 @@
     </section>
 
     <section class="mb-(--spacing-lg)">
-        <h3 class="text-(--accent-color) text-(length:--font-size-lg) font-bold">LANGUAGES</h3>
-        <div class="h-(--divider-weight) bg-(--divider-color) mb-(--spacing-lg)"></div>
+        <h3 class="text-(length:--font-size-lg) font-bold text-(--accent-color)">LANGUAGES</h3>
+        <div class="mb-(--spacing-lg) h-(--divider-weight) bg-(--divider-color)"></div>
 
-        <table class="text-(length:--font-size) leading-none border-separate border-spacing-y-(--spacing-sm)">
+        <table class="border-separate border-spacing-y-(--spacing-sm) text-(length:--font-size) leading-none">
             <tbody>
                 {#each languages as language}
                     <tr>
@@ -80,8 +80,8 @@
     </section>
 
     <section class="mb-(--spacing-lg)">
-        <h3 class="text-(--accent-color) text-(length:--font-size-lg) font-bold">EDUCATION</h3>
-        <div class="h-(--divider-weight) bg-(--divider-color) mb-(--spacing-lg)"></div>
+        <h3 class="text-(length:--font-size-lg) font-bold text-(--accent-color)">EDUCATION</h3>
+        <div class="mb-(--spacing-lg) h-(--divider-weight) bg-(--divider-color)"></div>
         <div class="mt-(--spacing-lg)">
             <div class="flex items-center justify-between">
                 <div class="text-(length:--font-size-lg) font-bold">{education.area}</div>
