@@ -1,17 +1,16 @@
 import { json } from '@sveltejs/kit';
 import puppeteer from 'puppeteer-core';
 import Fs from 'node:fs/promises';
-import { resume } from './shared.svelte.js';
-import { randomUUID } from 'node:crypto';
+import { resume, id } from './shared.svelte.js';
 
 export async function POST({ request, url }) {
-    const id = randomUUID();
-    resume[id] = await request.json();
+    id.value += 1;
+    resume[id.value] = await request.json();
 
     await Fs.rm('static/resume.pdf', { force: true });
     const browser = await puppeteer.launch({ channel: 'chrome', headless: true });
     const page = await browser.newPage();
-    await page.goto(`${url.href}?id=${id}`, { waitUntil: 'networkidle2' });
+    await page.goto(`${url.href}?id=${id.value}`, { waitUntil: 'networkidle2' });
     await page.pdf({
         path: 'static/resume.pdf',
         format: 'a4',
@@ -24,5 +23,5 @@ export async function POST({ request, url }) {
         },
     });
     await browser.close();
-    return json({ id }, { status: 201 });
+    return json({ id: id.value }, { status: 201 });
 }
