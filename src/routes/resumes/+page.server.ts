@@ -1,6 +1,13 @@
 import { error } from '@sveltejs/kit';
 import { addResume, getAllResumes } from '../shared.svelte.js';
-import { getTemplate } from '$lib/template.js';
+import {
+    allCloudDevops,
+    allDatabases,
+    allObservability,
+    allProgramming,
+    allSystemDesign,
+    getTemplate
+} from '$lib/template.js';
 
 export function load({ url }) {
     return { resumes: getAllResumes(), href: url.href };
@@ -21,7 +28,9 @@ export const actions = {
             return (
                 jobDesc.includes(` ${e.toLocaleLowerCase()} `) ||
                 jobDesc.includes(` ${e.toLocaleLowerCase()}. `) ||
+                jobDesc.includes(`${e.toLocaleLowerCase()}. `) ||
                 jobDesc.includes(` ${e.toLocaleLowerCase()}, `) ||
+                jobDesc.includes(`${e.toLocaleLowerCase()}, `) ||
                 jobDesc.includes(` ${e.toLocaleLowerCase()}; `) ||
                 jobDesc.includes(`(${e.toLocaleLowerCase()} `) ||
                 jobDesc.includes(` ${e.toLocaleLowerCase()})`) ||
@@ -64,105 +73,3 @@ export const actions = {
         addResume(template);
     }
 };
-
-const allProgramming = [
-    'Java',
-    'Kotlin',
-    'Scala',
-    'Go',
-    'Golang',
-    'Elixir',
-    'JavaScript',
-    'TypeScript',
-    'Node',
-    'Node.js',
-    'NodeJS',
-    'Express',
-    'Express.js',
-    'ExpressJS',
-    'React',
-    'React.js',
-    'ReactJS',
-    'Angular',
-    'Angular.js',
-    'AngularJS',
-    'Spring',
-    'Spring Boot',
-    'SpringBoot',
-    'Maven',
-    'Gradle'
-];
-const allDatabases = [
-    'Postgres',
-    'PostgreSQL',
-    'MySQL',
-    'MariaDB',
-    'SQL Server',
-    'Oracle',
-    'SQLite',
-    'MongoDB',
-    'Mongo',
-    'Mongo DB',
-    'Cassandra',
-    'Redis',
-    'Dynamo',
-    'DynamoDB'
-];
-const allCloudDevops = [
-    'AWS',
-    'GCP',
-    'Google Cloud Plataform',
-    'Docker',
-    'Kubernetes',
-    'Jenkins',
-    'Github Actions',
-    'Argo',
-    'ArgoCD',
-    'CI/CD',
-    'Linux'
-];
-const allSystemDesign = [
-    'Microservices',
-    'Event-driven architecture',
-    'RESTful APIs',
-    'RESTful',
-    'REST',
-    'GraphQL',
-    'gRPC',
-    'Clean Code',
-    'Design Patterns',
-    'SOLID',
-    'KISS',
-    'YAGNI',
-    'EC2',
-    'EKS',
-    'S3',
-    'RDS',
-    'SQS',
-    'SNS',
-    'Lambda',
-    'VPC',
-    'CloudFront',
-    'IAM',
-    'Elastic Beanstalk',
-    'Kafka',
-    'RabbitMQ',
-    'Memcached'
-];
-const allObservability = [
-    'Chronosphere',
-    'New Relic',
-    'NewRelic',
-    'Grafana',
-    'OpenSearch',
-    'Datadog',
-    'Dynatrace',
-    'Prometheus',
-    'AppDynamics',
-    'CloudWatch',
-    'Azure Monitor',
-    'Instana',
-    'Elastic Observability',
-    'LM Envision',
-    'Splunk Observability Cloud'
-];
