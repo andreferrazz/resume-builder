@@ -20,7 +20,7 @@
     <section class="mb-(--spacing-lg)">
         <h3 class="text-(length:--font-size-lg) font-bold text-(--accent-color)">SUMMARY</h3>
         <div class="mb-(--spacing-lg) h-(--divider-weight) bg-(--divider-color)"></div>
-        <div class="text-(length:--font-size)">{summary}</div>
+        <div class="text-(length:--font-size) text-justify">{summary}</div>
     </section>
 
     <section class="mb-(--spacing-lg)">
@@ -35,7 +35,7 @@
                 <div class="text-(length:--font-size) font-bold">{e.title}</div>
                 <ul>
                     {#each e.topics as topic}
-                        <li class="mt-(--spacing-sm) text-(length:--font-size)">• {topic}</li>
+                        <li class="mt-(--spacing-sm) text-(length:--font-size) text-justify">• {topic}</li>
                     {/each}
                 </ul>
             </div>
@@ -47,10 +47,10 @@
         <div class="mb-(--spacing-lg) h-(--divider-weight) bg-(--divider-color)"></div>
         <table class="border-separate border-spacing-y-(--spacing-sm) text-(length:--font-size)">
             <tbody>
-                {#each skills as skill}
+                {#each Object.keys(skills) as key}
                     <tr>
-                        <td class="w-[200px]"><strong>{skill.title}</strong></td>
-                        <td>{skill.items}</td>
+                        <td class="w-[250px]"><strong>{skills[key].title}</strong></td>
+                        <td>{skills[key].items.join(', ')}</td>
                     </tr>
                 {/each}
             </tbody>
@@ -65,7 +65,7 @@
             <tbody>
                 {#each languages as language}
                     <tr>
-                        <td class="w-[200px]"><strong>{language.name}</strong></td>
+                        <td class="w-[250px]"><strong>{language.name}</strong></td>
                         <td>
                             {#if language.certificate}
                                 <a href={language.certificate}>{language.level}</a>
@@ -91,20 +91,3 @@
         </div>
     </section>
 </div>
-
-<style>
-    :root {
-        --font-size: 12px;
-        --font-size-lg: 14px;
-        --font-size-xl: 20px;
-        --spacing-sm: 8px;
-        --spacing-lg: 16px;
-        --divider-weight: 2px;
-        --accent-color: #0d067f;
-        --divider-color: var(--accent-color);
-    }
-
-    a {
-        color: #1a0ca2;
-    }
-</style>

@@ -1,18 +1,15 @@
 import { json } from '@sveltejs/kit';
 import puppeteer from 'puppeteer-core';
 import Fs from 'node:fs/promises';
-import { resume, id } from './shared.svelte.js';
 
-export async function POST({ request, url }) {
-    id.value += 1;
-    resume[id.value] = await request.json();
-
+// TODO: make this endpoint answer with a pdf file
+export async function GET({ params, url }) {
     await Fs.rm('static/resume.pdf', { force: true });
     const browser = await puppeteer.launch({ channel: 'chrome', headless: true });
     const page = await browser.newPage();
-    await page.goto(`${url.href}?id=${id.value}`, { waitUntil: 'networkidle2' });
+    await page.goto(`${url.href}`, { waitUntil: 'networkidle2' });
     await page.pdf({
-        path: 'static/resume.pdf',
+        path: `static/resume-${params.id}.pdf`,
         format: 'a4',
         printBackground: true,
         margin: {
@@ -23,5 +20,5 @@ export async function POST({ request, url }) {
         },
     });
     await browser.close();
-    return json({ id: id.value }, { status: 201 });
+    return json({ id: params.id }, { status: 201 });
 }

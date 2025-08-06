@@ -1,1 +1,16 @@
 @import 'tailwindcss';
+
+:root {
+    --font-size: 12px;
+    --font-size-lg: 14px;
+    --font-size-xl: 20px;
+    --spacing-sm: 8px;
+    --spacing-lg: 16px;
+    --divider-weight: 2px;
+    --accent-color: #0d067f;
+    --divider-color: var(--accent-color);
+}
+
+a {
+    color: #1a0ca2;
+}
